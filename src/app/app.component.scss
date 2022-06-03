@@ -1,0 +1,92 @@
+@mixin button {
+    background-color: #ca2031;
+    border-radius: 10px;
+    padding: 0px 3px 0px 3px;
+    color: white;
+    border: none;
+    margin-top: 10px;
+    cursor: pointer;
+}
+.main-div{
+    margin: 20px;
+}
+.products{
+    display: flex;
+background-color: white;
+box-shadow: 5px 5px 5px 4px gray;
+    justify-content: space-between;
+}
+.vertical-line{
+    display: flex;
+    border-left: 4px solid black;
+    min-height: 560px;
+}
+.add-product{
+    width: 49%;
+    display: flex;
+    justify-content: center;
+    margin: auto;
+margin-top: 20px;
+}
+.items{
+    width: 49%;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+}
+.burger{
+    width: 50%;
+    height: fit-content;
+
+    text-align: center;
+
+}
+
+.burger img {
+    width: 100%;
+    border-radius: 10px;
+}
+.burger span{
+    font-size: 20px;
+margin-top: 20px;
+}
+.table-row{
+    width: 100%;
+    margin-top: 100px;
+}
+table {
+    width: 100%;
+    text-align: center;
+}
+
+table,
+th,
+td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 5px;
+}
+thead{
+    color: white;
+    background-color: black;
+}
+input{
+    margin:10px 0px 10px ;
+    padding: 5px 3px 5px 3px;
+    width: 100%;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid black;
+}
+.burger button{
+   @include button;
+   width: 150px;
+   height: 40px;
+   font-size: 16px;
+}
+.table-row button{
+    @include button;
+    width: 50px;
+    height: 30px;
+    font-size: 12px;
+}

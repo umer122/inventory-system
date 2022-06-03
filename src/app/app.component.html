@@ -1,0 +1,104 @@
+<head>
+  <link
+  rel="stylesheet"
+  href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+  integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+  crossorigin="anonymous"
+  referrerpolicy="no-referrer"
+/>
+</head>
+
+<div class="main-div">
+  <div class="products">
+    <div class="add-product">
+      <div class="burger">
+        <img src="../assets//burger.jpg" />
+
+        <span>Add Product to inventory</span>
+        <div class="div">
+          <h1 *ngIf="HideShow else elsebuttom" style="color: red;" > <form [formGroup]="inventoryForm"  (ngSubmit)="getValue(inventoryForm.value)" >
+            <input
+              formControlName="name"
+              type="text"
+              placeholder="Name"
+              required 
+              >
+              <br/>
+             
+            <input
+            id="number" 
+            required
+             type="number"
+            formControlName="price"
+            placeholder="Price(Retail)"
+            
+            >
+           
+            <br/>
+              <input
+              type="text"
+              required
+              formControlName="quantity"
+              placeholder="Quantity"
+            />
+            <!-- <input
+              type="text"
+              ngModel
+              name="saleprice"
+              placeholder="SalePrice"
+            /><br /> -->
+            <input type="date"
+            required
+             formControlName="date" name="date" />
+            <br/>
+            <!-- type="submit" [disabled]="inventoryForm.invalid" -->
+            <button  >{{toggleDisplay?"Add to Inventory":'Update'}}</button>
+          </form>
+          </h1>
+          <ng-template #elsebuttom>  
+             <button (click)="toggle()" >  {{HideShow?'Show':'Add to Inventory'}}</button>       
+          </ng-template>
+      
+          
+          
+        </div>
+      </div>
+    </div>
+    <div class="vertical-line"></div>
+    <div class="items">
+      <div class="table-row">
+        <table>
+          <thead>
+            <tr>
+              <td>ID</td>
+              <td>Name</td>
+              <td>Price</td>
+              <td>Quantity</td>
+              <td>Total price</td>
+              <td>Date</td>
+              <td>Delete</td>
+              <td>Update</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of listData; let x = index">
+              <td>{{ x + 1 }}</td>
+              <td>{{ item.name }}</td>
+              <td>{{ item.price }}</td>
+              <td>{{ item.quantity }}</td>
+              <td>{{ item.price*item.quantity}}</td>
+              <td>{{ item.date }}</td>
+              <td>
+                <button (click)="deleteItem(item)"><i class="fa fa-trash"></i></button>
+              </td>
+              <td>
+                <button (click)="updateName(item, x)"><i class="fa fa-refresh"></i></button>
+              </td>
+              
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
