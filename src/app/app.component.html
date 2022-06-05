@@ -16,12 +16,13 @@
 
         <span>Add Product to inventory</span>
         <div class="div">
-          <h1 *ngIf="HideShow else elsebuttom" style="color: red;" > <form [formGroup]="inventoryForm"  (ngSubmit)="getValue(inventoryForm.value)" >
-            <input
+          <h1 *ngIf="HideShow else elsebuttom" style="color: red;" >
+             <form [formGroup]="inventoryForm"  (ngSubmit)="getValue(inventoryForm.value)" >
+            <input required
               formControlName="name"
               type="text"
               placeholder="Name"
-              required 
+               
               >
               <br/>
              
@@ -41,18 +42,14 @@
               formControlName="quantity"
               placeholder="Quantity"
             />
-            <!-- <input
-              type="text"
-              ngModel
-              name="saleprice"
-              placeholder="SalePrice"
-            /><br /> -->
+            
             <input type="date"
             required
+            min="{{currentDate | date}}"
+            dateFormat="MM/YYYY"
              formControlName="date" name="date" />
             <br/>
-            <!-- type="submit" [disabled]="inventoryForm.invalid" -->
-            <button  >{{toggleDisplay?"Add to Inventory":'Update'}}</button>
+            <button class="btn btn-primary" [disabled]="inventoryForm.invalid" >{{toggleDisplay?"Add to Inventory":'Update'}}</button>
           </form>
           </h1>
           <ng-template #elsebuttom>  

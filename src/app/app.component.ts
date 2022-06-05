@@ -12,7 +12,8 @@ export class AppComponent {
   arrayIndex: any=[];
   toggleDisplay :boolean=true;
   HideShow:boolean=false
-  minDate = new Date();
+  currentDate:any=new Date();
+  
   data: any = [];
   maxDate=new Date("03/01/2020")
 
@@ -20,10 +21,10 @@ export class AppComponent {
     this.HideShow=!this.HideShow
   }
   inventoryForm = new FormGroup({
-    name: new FormControl(null,[Validators.required,Validators.email]),
-    price: new FormControl(null,[Validators.required, Validators.pattern("^[0-9]*$")]),
-    quantity: new FormControl(null,[Validators.required]),
-    date: new FormControl(null,[Validators.required,]),
+    name: new FormControl(null),
+    price: new FormControl(null),
+    quantity: new FormControl(null),
+    date: new FormControl(null),
   });
  
   
@@ -53,6 +54,7 @@ export class AppComponent {
     }
     localStorage.setItem("MenuItem",JSON.stringify(this.listData))
   }
+
   index: any = [];
   deleteItem(data: any) {
     this.index = this.listData.indexOf(data);
